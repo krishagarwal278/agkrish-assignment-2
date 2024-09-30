@@ -1,6 +1,6 @@
 # Variables
 VENV_DIR = venv
-PYTHON = $(VENV_DIR)/bin/python
+PYTHON = python3
 PIP = $(VENV_DIR)/bin/pip
 
 # Default action to install and run the app
@@ -8,7 +8,7 @@ all: install run
 
 # Create the virtual environment if it doesn't exist
 $(VENV_DIR)/bin/activate: requirements.txt
-	python3 -m venv $(VENV_DIR)
+	$(PYTHON) -m venv $(VENV_DIR)
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 
@@ -18,7 +18,7 @@ install: $(VENV_DIR)/bin/activate
 
 # Run the Flask application
 run: $(VENV_DIR)/bin/activate
-	$(PYTHON) -m flask run --port=3000
+	$(VENV_DIR)/bin/python -m flask run --port=3000
 
 # Clean up the virtual environment (optional)
 clean:
