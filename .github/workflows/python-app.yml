@@ -32,5 +32,4 @@ jobs:
 
     - name: Run tests (Optional, add your test commands here)
       run: |
-        # Insert test commands here if you have any
         echo "Tests would be run here"
