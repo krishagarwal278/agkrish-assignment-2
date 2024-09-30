@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering Visualization</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js"></script>
+    <style>
+    body {
+        background-color: #bcf7ff; /* Light cyan background for a soft look */
+        color: #2c3e50; /* Darker text color for better contrast */
+        font-family:'Times New Roman', Times, serif;
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #ffffff; /* Pure white for card background */
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Slightly deeper shadow for more emphasis */
+    }
+
+    .title {
+        text-align: center;
+        font-size: 28px; /* Slightly larger for better readability */
+        font-weight: bold;
+        color: #00796b; /* Teal color for the title */
+        margin-bottom: 30px;
+    }
+
+    #visualization {
+        border: 2px solid #00796b; /* Teal border to match the title */
+        width: 100%;
+        height: 400px; /* Fixed height for visualization */
+        margin-bottom: 20px;
+        background-color: #fafafa; /* Light grey background for visualization */
+    }
+
+    .form-group {
+        margin-bottom: 30px; /* Increased space between form elements */
+    }
+
+    /* Button container for better layout */
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    button {
+        flex: 1;
+        margin: 10px;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        text-transform: capitalize;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Slight shadow for button */
+    }
+
+    .btn-primary {
+        background-color: navy; /* Blue color for primary button */
+        color: white;
+    }
+    .btn-primary:hover {
+        background-color: #0277bd;
+        transform: scale(1.05); /* Slight scaling on hover */
+    }
+
+    .btn-success {
+        background-color: pink; /* Green color for success button */
+        color: white;
+    }
+    .btn-success:hover {
+        background-color: darkmagenta;
+        transform: scale(1.05);
+    }
+
+    .btn-info {
+        background-color: #039be5; /* Light blue for info button */
+        color: white;
+    }
+    .btn-info:hover {
+        background-color: #0288d1;
+        transform: scale(1.05);
+    }
+
+    .btn-danger {
+        background-color: #d32f2f; /* Red color for reset button */
+        color: white;
+    }
+    .btn-danger:hover {
+        background-color: #c62828;
+        transform: scale(1.05);
+    }
+
+    /* Adjusting layout for responsiveness */
+    @media (max-width: 768px) {
+        button {
+            flex-basis: 100%; /* Full width for smaller screens */
+        }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">KMeans Clustering Visualization</h1>
+
+        <!-- Dropdown for selecting initialization method -->
+        <div class="form-group">
+        <label for="init-method">Select Initialization Method:</label>
+            <select class="form-control" id="init-method">
+            <option value="random">Random</option>
+            <option value="farthest_first">Farthest First</option>
+            <option value="kmeans++">KMeans++</option>
+            <option value="manual">Manual</option>
+            </select>
+        </div>
+
+        <!-- Input for number of clusters -->
+        <div class="form-group">
+            <label for="num-clusters">Number of Clusters (k):</label>
+            <input type="number" id="num-clusters" class="form-control" value="3" min="1" />
+        </div>
+
+        <!-- Buttons for interaction -->
+        <div class="button-container">
+            <button class="btn btn-primary" id="generate-btn">Generate Data</button>
+            <button class="btn btn-success" id="run-btn">Run to Convergence</button>
+            <button class="btn btn-info" id="step-btn">Step Through KMeans</button>
+            <button class="btn btn-danger" id="reset-btn">Reset Data</button>
+        </div>
+
+        <!-- Visualization area -->
+        <div id="visualization"></div>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include your JavaScript file -->
+    <script src="/static/app.js"></script>
+</body>
+</html>
